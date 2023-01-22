@@ -1,0 +1,178 @@
+.services-background-header {
+  background-image: url(../images/services_background_image.png),
+    linear-gradient(232deg, #152d4b 100%, #152d4b 38%, #152d4b 38%, #152d4b 38%);
+  background-color: #152d4b;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 665px;
+  display: flex;
+}
+
+.rich-text-block p:last-child {
+  margin-bottom: 0;
+}
+
+.services-header-box {
+  max-width: 490px;
+  width: 100%;
+}
+
+.services-image-box {
+  max-width: 350px;
+  width: 100%;
+}
+
+.services-icon-box {
+  max-width: 42px;
+  width: 100%;
+}
+
+.services-header-box img,
+.services-icon-box img,
+.services-image-box img {
+  width: 100%;
+  height: auto;
+}
+
+/* About us - Das Unternehmen */
+.about-us-background-header {
+  background-color: #5836c3;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 600px;
+  display: flex;
+}
+
+.checkbox-card-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.checkbox-card-body ul li {
+  padding-left: 1.3em;
+}
+
+.checkbox-card-body ul li:before {
+  content: "✔";
+  color: #5836c3;
+  display: inline-block;
+  margin-left: -1.3em;
+  width: 1.3em;
+}
+
+.about-us-image-box {
+  display: flex;
+  align-items: flex-end;
+}
+
+.about-us-image {
+  height: auto;
+  max-width: 100%;
+}
+
+/* Contact us - Kontakt */
+.contact-us-background {
+  background-image: url(../images/contact_us_background_image.png),
+    linear-gradient(232deg, rgba(22, 28, 36, 0.24) 100%, #161c24 38%, #161c24 38%, #161c24 38%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #f8f9fa;
+}
+
+#map {
+  height: 600px;
+  border-radius: 16px;
+}
+
+.contact-form-box {
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.input-box {
+  width: 100%;
+  border: 1px solid rgba(145, 158, 171, 0.32);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: #212b36;
+}
+
+.input-box:focus {
+  outline: none !important;
+  box-shadow: 0 2px 5px 1px #d2dae5;
+}
+
+.input-box::placeholder {
+  font-size: 1rem;
+  color: #919eab;
+}
+
+/* Careers - Karriere */
+.careers-background {
+  background-image: url(../images/careers_background_image.png),
+    linear-gradient(232deg, #161c24 100%, #161c24 38%, #161c24 38%, #161c24 38%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #161c24;
+}
+
+.careers-background-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.job-position-tag-pill {
+  flex-shrink: 0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #f3f0ff;
+  font-size: 14px;
+  font-weight: 500;
+  color: #212b36;
+}
+
+.job-position-card {
+  background-color: #fff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 40px 80px 0 rgba(26, 9, 81, 0.03);
+}
+
+@media (max-width: 1199.98px) {
+  .sercices-flex-box {
+    gap: 50px;
+  }
+
+  .services-header-box {
+    max-width: 440px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .about-us-image-box {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .job-position-card {
+    padding: 24px;
+  }
+
+  .interfering-service-box {
+    margin-top: 1.25rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+}
+
+@media (min-width: 768px) {
+}

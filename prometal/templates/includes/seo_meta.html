@@ -1,0 +1,22 @@
+{%if seo.seo_no_index%}<meta name="robots" content="noindex">{% endif %}
+<link rel="canonical" href="{% block canonical %}{{ self.seo_canonical_url }}{% endblock %}">
+<meta name="description" content="{% block description %}{{ self.seo_description }}{% endblock %}" />
+
+<meta property="og:title" content="{% block og_title %}{{ self.seo_pagetitle }}{% endblock %}" />
+<meta property="og:description" content="{% block og_description %}{{ self.seo_description }}{% endblock %}" />
+<meta property="og:image" content="{% block og_image %}{{ self.seo_image_url }}{% endblock %}" />
+<meta property="og:site_name" content="{% block og_site_name %}{{ self.seo_sitename }}{% endblock %}" />
+<meta property="og:url" content="{% block og_url %}{{ self.seo_canonical_url }}{% endblock %}" />
+<meta property="og:type" content="{% block og_type %}{{ self.seo_og_type }}{% endblock %}" />
+{%if seo.image_width%}<meta property="og:image:width" content="800" />{% endif %}
+{%if seo.image_height%}<meta property="og:image:height" content="600" />{% endif %}
+
+<meta name="twitter:card" content="{% block twitter_card %}{{ self.seo_twitter_card_content }}{% endblock %}" />
+<meta name="twitter:title" content="{% block twitter_title %}{{ self.seo_pagetitle }}{% endblock %}">
+<meta name="twitter:image" content="{% block twitter_image %}{{ self.seo_image_url }}{% endblock %}">
+<meta name="twitter:description" content="{% block twitter_description %}{{ self.seo_description }}{% endblock %}">
+<meta name="twitter:site" content="{% block twitter_site %}{{ settings.wagtailseo.SeoSettings.at_twitter_site }}{% endblock %}" />
+
+{% if self.seo_og_type == "article" and self.seo_author %}
+<meta property="article:author" content="{% block og_author %}{{ self.seo_author }}{% endblock %}" />
+{% endif %}

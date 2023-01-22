@@ -1,0 +1,43 @@
+{% load static %}
+
+<nav id="navbar_header" class="navbar navbar-expand-md fixed-top bg-dark navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img id="navbar_brand_img" src="{% static 'images/prometal_header_logo.png' %}" height="40" alt="ProMetal Logo">
+    </a>
+    <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav nav nav-pills ms-auto mt-4 mt-md-0">
+        <li class="nav-item"><a href="/sherbimet/" class="nav-link active{% if '/sherbimet/' in request.path %} active{% endif %} me-xl-2"><span class="py-1">Shërbimet</span><span class="inner">&nbsp;</span></a></li>
+        <li class="nav-item"><a href="/produktet/" class="nav-link{% if '/produktet/' in request.path %} active{% endif %} me-xl-2"><span class="py-1">Produktet</span><span class="inner">&nbsp;</span></a></li>
+        <li class="nav-item"><a href="/kontakti/" class="nav-link{% if '/kontakti/' in request.path %} active{% endif %} me-xl-2"><span class="py-1">Kontakti</span><span class="inner">&nbsp;</span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% block extra_js %}
+<script>
+  var screenWidth = window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
+
+  if (screenWidth > 768) {
+    window.onscroll = function () {
+      scrollFunction()
+    };
+  }
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+      document.getElementById("navbar_header").classList.add('navbar-on-scroll');
+    } else {
+      document.getElementById("navbar_header").classList.remove('navbar-on-scroll');
+    }
+  }
+
+</script>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load wagtailcore_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static "style/extra_pages.css" %}" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+  integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+  crossorigin=""></script>
+<script src="{% static "js/contact_form.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="contact-us-background">
+  <div class="container py-4 py-md-5">
+    <div class="row py-4 py-md-5">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row py-4 pt-md-5">
+    <div class="col-lg-6 pb-4">
+      <div class="p-3 p-md-4 py-lg-4-5">
+
+        <div id="map"></div>
+
+      </div>
+    </div>
+
+    <div class="col-lg-6 pb-4">
+      <div class="p-3 p-md-4 py-lg-4-5">
+        {% url 'contact_form_submit' as contact_form_submit_url%}
+        <form onsubmit="return validateContactForm();" method="POST" action="{{contact_form_submit_url}}">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-12 mb-4">
+              <h2 class="h2 text-dark text-bold mb-3">{{self.contact_form_title|richtext}}</h2>
+            </div>
+
+            <div class="col-md-6 mb-4 mb-md-5">
+              <input class="input-box" type="text" id="id_first_name" name="first_name" placeholder="Emri" onchange="updateFirstName();" />
+            </div>
+
+            <div class="col-md-6 mb-4 mb-md-5">
+              <input class="input-box" type="text" id="id_last_name" name="last_name" placeholder="Mbiemri" onchange="updateLastName();" />
+            </div>
+
+            <div class="col-md-6 mb-4 mb-md-5">
+              <input class="input-box" type="text" id="id_email" name="email" placeholder="Email" onchange="updateEmail();" />
+            </div>
+
+            <div class="col-md-6 mb-4 mb-md-5">
+              <input class="input-box" type="text" id="id_phone_no" name="phone_no" placeholder="Numri i telefonit"
+                onchange="updatePhoneNumber();" />
+            </div>
+
+            <div class="col-12 mb-4 mb-md-4-5">
+              <textarea class="input-box" rows="4" id="id_message" name="message" placeholder="Mesazhi"
+                onchange="updateMessage();"></textarea>
+            </div>
+
+            <div class="col-md-8 mb-4 mb-md-4-5">
+              <div class="w-100 d-inline-block pb-2" style="border-bottom: 1px solid transparent;" id="id_recaptcha_box">
+                {{ contact_form.recaptcha }}
+              </div>
+            </div>
+
+            <div class="col-md-4 d-flex justify-content-end align-items-end mb-4 mb-md-4-5">
+              <div class="d-inline-block pb-2">
+                <button type="submit" class="button-prometal">{{ self.submit_button_text }}</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% load static wagtailcore_tags wagtailuserbar %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="sq">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {% if self.seo_no_index or seo_no_index %}
+  <meta name="robots" content="noindex">
+  {% endif %}
+
+  {% if self %}
+  {% include "wagtailseo/meta.html" %}
+  {% else %}
+  <title>{% block title %}{% endblock %} — ProMetal</title>
+  {% if seo_meta %}
+  {% include "includes/seo_meta.html" with seo=seo_meta %}
+  {% endif %}
+  {% endif %}
+
+  {# Force all links in the live preview panel to be opened in a new tab #}
+  {% if request.in_preview_panel %}
+  <base target="_blank">
+  {% endif %}
+
+  {% block extra_seo %}
+  {% endblock %}
+
+  {# Favicons #}
+  <link rel="shortcut icon" href="{% static 'images/favicons/favicon.ico' %}" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="{% static 'images/favicons/apple-touch-icon.png' %}" />
+  <link rel="apple-touch-icon" sizes="57x57" href="{% static 'images/favicons/apple-touch-icon-57x57.png' %}" />
+  <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/favicons/apple-touch-icon-72x72.png' %}" />
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'images/favicons/apple-touch-icon-76x76.png' %}" />
+  <link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/favicons/apple-touch-icon-114x114.png' %}" />
+  <link rel="apple-touch-icon" sizes="120x120" href="{% static 'images/favicons/apple-touch-icon-120x120.png' %}" />
+  <link rel="apple-touch-icon" sizes="144x144" href="{% static 'images/favicons/apple-touch-icon-144x144.png' %}" />
+  <link rel="apple-touch-icon" sizes="152x152" href="{% static 'images/favicons/apple-touch-icon-152x152.png' %}" />
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicons/apple-touch-icon-180x180.png' %}" />
+
+  {# Global stylesheets #}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+    integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+  <link rel="stylesheet" type="text/css" href="{% static 'style/core.css' %}" />
+
+  {% block extra_css %}
+  {% endblock %}
+
+  {# Fonts #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  {# Global site tag (gtag.js) #}
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEK9ZNKPVM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-MEK9ZNKPVM');
+
+  </script>
+</head>
+
+<body>
+  {% wagtailuserbar %}
+
+  {# Header #}
+  {% include "components/header.html" %}
+
+  <div class="main-content">
+    {% block content %}{% endblock %}
+  </div>
+
+  {# Footer #}
+  {% include "components/footer.html" %}
+
+  {% include "wagtailseo/struct_data.html" %}
+
+  {# Global scripts #}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.slim.min.js"
+    integrity="sha512-jxwTCbLJmXPnV277CvAjAcWAjURzpephk0f0nO2lwsvcoDMqBdy1rh1jEwWWTabX1+Grdmj9GFAgtN22zrV0KQ==" crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"
+    integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A==" crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
+
+  {% block extra_js %}
+  {% endblock %}
+</body>
+
+</html>

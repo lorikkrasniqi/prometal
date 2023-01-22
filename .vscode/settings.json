@@ -1,0 +1,12 @@
+{
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "black",
+  "editor.formatOnSave": true,
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.dockerignore": true,
+    "**/Dockerfile": true
+  },
+  "python.analysis.typeCheckingMode": "basic"
+}
